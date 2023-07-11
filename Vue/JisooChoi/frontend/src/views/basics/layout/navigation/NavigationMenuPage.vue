@@ -5,8 +5,7 @@
     <v-app-bar color="dark" app dark>
       <v-app-bar-nav-icon @click="navigation_drawer = !navigation_drawer" />
       <v-btn @click="goToHome">
-        <v-img.
-        
+        <v-img
           class="mx-2"
           src="@/assets/logo.png"
           max-height="40"
