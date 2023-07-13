@@ -13,9 +13,9 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.Mockito.*;
@@ -23,6 +23,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+
 @SpringBootTest
 @AutoConfigureMockMvc
 public class BoardApiMockingTest {
@@ -32,19 +33,17 @@ public class BoardApiMockingTest {
 
     @MockBean
     private JpaBoardService boardService;
-
+    
     @Test
     @DisplayName("list api 테스트")
-    public void list_api_테스트() throws Exception {
-        List<JpaBoard> expectedBoardList = Arrays.asList(
+    public void list_api_테스트 () throws Exception {
+        final List<JpaBoard> expectedBoardList = Arrays.asList(
                 new JpaBoard("제목1", "작성자1", "내용1"),
                 new JpaBoard("제목2", "작성자2", "내용2")
         );
 
-        // when에 가면 mocking이 된다. (list는 parameter가 없다.)
         when(boardService.list()).thenReturn(expectedBoardList);
 
-        // api 호출
         mockMvc.perform(get("/jpa-board/list"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
@@ -61,18 +60,17 @@ public class BoardApiMockingTest {
 
     @Test
     @DisplayName("register api 테스트")
-    public void register_api_테스트() throws Exception {
+    public void register_api_테스트 () throws Exception {
         final RequestBoardForm boardForm = new RequestBoardForm("제목", "내용", "작성자");
         final JpaBoard board = boardForm.toJpaBoard();
 
         ObjectMapper objectMapper = new ObjectMapper();
 
         // Boot 3.x에서는 ObjectMapper를 반드시 사용하도록 한다.
-        String content = objectMapper.writeValueAsString(board);
+        String content = objectMapper.writeValueAsString(boardForm);
 
-        when(boardService.register(board)).thenReturn(board);
+        when(boardService.register(boardForm.toJpaBoard())).thenReturn(board);
 
-        // api 호출
         mockMvc.perform(post("/jpa-board/register")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(content))
@@ -80,13 +78,13 @@ public class BoardApiMockingTest {
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 // 리스트가 아닌 낱개의 경우 length()는 엔티티의 필드(변수) 개수
                 // $[0], $[1] 은 리스트
-                // 낱개의 경우 $.필드(변수)명으로 작성합니다.
-                // 낱개로 주는 경우에 전체 리턴하는 엔티티의 개수를 검증하지 않고 필드 개수를 검증해야 한다.
+                // 낱개의 경우 $.필드(변수)명으로 작성합니다
+                // 낱개로 주는 경우에 전체 리턴하는 엔티티의 개수를 검증하지 않고 필드 개수를 검증해야함
                 .andExpect(jsonPath("$.length()").value(6))
                 .andExpect(jsonPath("$.title").value("제목"))
                 .andExpect(jsonPath("$.content").value("내용"))
-                .andExpect(jsonPath("$.writer").value("작성자"));
+                .andExpect(jsonPath("$.writer").value("작성자"));;
 
-        verify(boardService, times(1)).register(board);
+        verify(boardService, times(1)).register(boardForm.toJpaBoard());
     }
 }

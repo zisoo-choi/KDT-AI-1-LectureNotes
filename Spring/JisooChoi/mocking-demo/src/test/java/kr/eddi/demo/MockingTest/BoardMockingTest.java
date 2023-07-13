@@ -67,7 +67,7 @@ public class BoardMockingTest {
 
     @Test
     @DisplayName("Mocking: 게시물 리스트 보기 테스트")
-    public void 게시물_리스트_보기 () {
+    public void 게시물을_리스트_보기 () {
         when(mockBoardRepository.findAll())
                 .thenReturn(Collections.emptyList());
 
@@ -80,14 +80,13 @@ public class BoardMockingTest {
     @Test
     @DisplayName("Mocking: 게시물 읽기 테스트")
     public void 게시물_읽기 () {
-        JpaBoard board = new JpaBoard("제목!", "작성자!", "내용!");
-        RequestBoardForm boardForm = new RequestBoardForm("제목!", "작성자!", "내용!");
+        JpaBoard board = new JpaBoard("제모크", "자크성자", "내애용");
+        RequestBoardForm boardForm =
+                new RequestBoardForm("제모크", "자크성자", "내애용");
 
         when(mockBoardRepository.findById(0L))
                 .thenReturn(Optional.of(
-                        new JpaBoard("제목!", "작성자!", "내용!")));
-//        when(mockBoardRepository.save(boardForm.toJpaBoard())).
-//                thenReturn(new JpaBoard("제목!", "작성자!", "내용!"));
+                        new JpaBoard("제모크", "자크성자", "내애용")));
 
         final JpaBoardServiceImpl sut = new JpaBoardServiceImpl(mockBoardRepository);
 
@@ -100,38 +99,31 @@ public class BoardMockingTest {
     @Test
     @DisplayName("Mocking: 게시물 수정 테스트")
     public void 게시물_수정 () {
-        JpaBoard board = new JpaBoard("제목!", "작성자!", "내용!");
+        JpaBoard board = new JpaBoard("제모크", "자크성자", "내애용");
         RequestBoardForm boardForm =
-                new RequestBoardForm("바꿀제목!",  "바꿀내용!", "작성자!");
+                new RequestBoardForm("바꿀제목", "바꿀내용", "자크성자");
 
         when(mockBoardRepository.findById(0L))
                 .thenReturn(Optional.of(
-                        new JpaBoard("제목!", "작성자!", "내용!")));
+                        new JpaBoard("제모크", "자크성자", "내애용")));
 
         when(mockBoardRepository.save(any()))
-                .thenReturn(new JpaBoard("바꿀제목!", "작성자!", "바꿀내용!"));
+                .thenReturn(new JpaBoard("바꿀제목", "자크성자", "바꿀내용"));
 
         final JpaBoardServiceImpl sut = new JpaBoardServiceImpl(mockBoardRepository);
 
         final JpaBoard actual = sut.modify(0L, boardForm);
         System.out.println("mocking result: " + actual);
-
-        assertThat(mockBoardRepository.findById(0L).get().getContent())
-                .isEqualTo(actual.getContent());
+        
         assertThat(mockBoardRepository.findById(0L).get().getTitle())
                 .isEqualTo(actual.getTitle());
+        assertThat(mockBoardRepository.findById(0L).get().getContent())
+                .isEqualTo(actual.getContent());
     }
 
-    // 제일 주의해야 하는 게 삭제이다.
     @Test
     @DisplayName("Mocking: 게시물 삭제 테스트")
     public void 게시물_삭제 () {
-//        JpaBoard board = new JpaBoard("제목", "작성자", "내용");
-//        Optional<JpaBoard> maybeBoard = Optional.of(board);
-//
-//        when(mockBoardRepository.findById(0L))
-//                .thenReturn(maybeBoard);
-
         final JpaBoardServiceImpl sut = new JpaBoardServiceImpl(mockBoardRepository);
         sut.delete(0L);
 

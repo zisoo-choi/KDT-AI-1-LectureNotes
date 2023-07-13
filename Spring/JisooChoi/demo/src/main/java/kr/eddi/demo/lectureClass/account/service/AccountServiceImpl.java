@@ -1,9 +1,9 @@
 package kr.eddi.demo.lectureClass.account.service;
 
+import kr.eddi.demo.lectureClass.account.controller.form.AccountResponseForm;
 import kr.eddi.demo.lectureClass.account.entity.MemberAccount;
 import kr.eddi.demo.lectureClass.account.repository.AccountRepository;
 import kr.eddi.demo.lectureClass.account.service.request.AccountRegisterRequest;
-import kr.eddi.demo.lectureClass.account.controller.form.AccountResponseForm;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -36,15 +36,15 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Long findAccountIdByEmail(String email){
-        if(email == null){
+    public Long findAccountIdByEmail(String email) {
+        if (email == null) {
             return -1L;
         }
 
         final Optional<MemberAccount> maybeAccount = accountRepository.findByEmail(email);
 
-        if(maybeAccount.isEmpty()){
-            return null;
+        if (maybeAccount.isEmpty()) {
+            return -1L;
         }
 
         return maybeAccount.get().getId();

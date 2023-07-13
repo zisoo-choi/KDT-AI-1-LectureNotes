@@ -6,10 +6,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class GithubOauthAccountInfoResponse {
 
     @JsonProperty("id")

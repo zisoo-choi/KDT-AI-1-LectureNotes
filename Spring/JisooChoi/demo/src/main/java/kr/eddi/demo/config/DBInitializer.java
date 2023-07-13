@@ -17,7 +17,6 @@ import org.springframework.stereotype.Component;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-
 @Slf4j
 @Component
 @RequiredArgsConstructor
@@ -30,6 +29,7 @@ public class DBInitializer {
     @PostConstruct
     private void init () {
         log.debug("initializer 시작!");
+
         initCategoryTypes();
         initAmountTypes();
 
@@ -62,6 +62,7 @@ public class DBInitializer {
                     amountRepository.findAll().stream()
                             .map(Amount::getAmountType)
                             .collect(Collectors.toSet());
+
             for (AmountType type: AmountType.values()) {
                 if (!amounts.contains(type)) {
                     final Amount amount = new Amount(type);
@@ -72,12 +73,14 @@ public class DBInitializer {
             log.error(e.getMessage(), e);
         }
     }
+
     private void initCategoryTypes () {
         try {
             final Set<CategoryType> categories =
                     categoryRepository.findAll().stream()
                             .map(Category::getCategoryType)
                             .collect(Collectors.toSet());
+
             for (CategoryType type: CategoryType.values()) {
                 if (!categories.contains(type)) {
                     final Category category = new Category(type);

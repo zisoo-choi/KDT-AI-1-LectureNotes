@@ -3,6 +3,7 @@ package kr.eddi.demo.lectureClass.account.controller.form;
 import kr.eddi.demo.lectureClass.account.service.request.AccountRegisterRequest;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
 @Getter

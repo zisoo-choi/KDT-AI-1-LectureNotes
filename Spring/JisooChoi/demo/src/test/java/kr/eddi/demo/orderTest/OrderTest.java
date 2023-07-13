@@ -2,9 +2,10 @@ package kr.eddi.demo.orderTest;
 
 import kr.eddi.demo.lectureClass.testCode.account.controller.form.TestAccountLoginResponseForm;
 import kr.eddi.demo.lectureClass.testCode.account.controller.form.TestAccountRequestForm;
-import kr.eddi.demo.lectureClass.testCode.account.controller.form.TestAccountResponseForm;
-import kr.eddi.demo.lectureClass.testCode.account.controller.form.TestOrderAccountRequestForm;
+import kr.eddi.demo.lectureClass.testCode.account.entity.TestAccount;
 import kr.eddi.demo.lectureClass.testCode.account.service.TestAccountService;
+import kr.eddi.demo.lectureClass.testCode.order.controller.form.TestAccountResponseForm;
+import kr.eddi.demo.lectureClass.testCode.order.controller.form.TestOrderAccountRequestForm;
 import kr.eddi.demo.lectureClass.testCode.order.controller.form.TestOrderListRequestForm;
 import kr.eddi.demo.lectureClass.testCode.order.controller.form.TestOrderRequestForm;
 import kr.eddi.demo.lectureClass.testCode.order.entity.TestOrder;
