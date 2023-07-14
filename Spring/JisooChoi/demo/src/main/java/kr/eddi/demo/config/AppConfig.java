@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 public class AppConfig {
 
     @Bean
-    public RestTemplate restTemplate() {
+    public RestTemplate restTemplate () {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getMessageConverters().add(
                 new MappingJackson2CborHttpMessageConverter());

@@ -23,7 +23,7 @@ public class FoodImage {
         this.uniqueRandomName = uniqueRandomName;
     }
 
-    public static FoodImage of(String uniqueRandomName) {
+    public static FoodImage of (String uniqueRandomName) {
         return new FoodImage(uniqueRandomName);
     }
 

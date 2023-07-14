@@ -1,6 +1,5 @@
 package kr.eddi.demo.config;
 
-
 import com.corundumstudio.socketio.SocketIOServer;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

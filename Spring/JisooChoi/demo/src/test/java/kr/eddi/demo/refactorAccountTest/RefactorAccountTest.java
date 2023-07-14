@@ -29,7 +29,7 @@ public class RefactorAccountTest {
                 new RefactorAccountRegisterRequestForm(email, password, role);
 
         Boolean isSuccess = refactorAccountService.register(
-                requestForm.toRefactorAccountRegisterRequest());
+                    requestForm.toRefactorAccountRegisterRequest());
 
         assertTrue(isSuccess);
     }
