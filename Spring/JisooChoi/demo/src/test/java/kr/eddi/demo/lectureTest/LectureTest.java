@@ -1,5 +1,6 @@
 package kr.eddi.demo.lectureTest;
 
+import kr.eddi.demo.DemoApplication;
 import kr.eddi.demo.lectureClass.testCode.lecture.entity.TestLecture;
 import kr.eddi.demo.lectureClass.testCode.lecture.service.TestLectureService;
 import kr.eddi.demo.lectureClass.testCode.student.entity.TestStudent;
@@ -8,10 +9,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+
 @SpringBootTest
+//@ContextConfiguration(classes = DemoApplication.class)
 public class LectureTest {
 
     @Autowired
@@ -23,12 +27,13 @@ public class LectureTest {
     @Test
     @DisplayName("x 학생이 Math 수강 신청하기")
     void studentRegisterLecture () {
-        final String expected = "영어";
-        TestStudent testStudent = new TestStudent("y"); // 원래라면 RequestForm 형태여야함
+        final String expected = "Math";
+        TestStudent testStudent = new TestStudent("x"); // 원래라면 RequestForm 형태여야함
         testStudent = testStudentService.register(testStudent);  // 학생이 사이트에 가입을 해야하기 때문 (현재는 정보 없음)
 
-        if (testStudent == null) {
-            System.out.println("닉네임이 같아 생성하지 않습니다!");
+        if(testStudent == null){
+            System.out.println("닉네님이 같아 생성하지 않습니다.");
+            return;
         }
 
         final TestLecture testLecture = testLectureService.register(expected, testStudent.getId());

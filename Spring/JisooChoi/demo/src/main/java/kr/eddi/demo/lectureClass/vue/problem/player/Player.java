@@ -10,13 +10,12 @@ import java.util.List;
 @Getter
 @ToString
 public class Player {
-    private List<Dice> diceList;
+    List<Dice> diceList;
     private int diceSum;
     private String name;
 
     public Player(int diceMaxNumber) {
         diceList = new ArrayList<>();
-
         for (int i = 0; i < diceMaxNumber; i++) {
             diceList.add(new Dice());
         }
@@ -56,4 +55,5 @@ public class Player {
     public void setDiceSum (int score) {
         this.diceSum = score;
     }
+
 }

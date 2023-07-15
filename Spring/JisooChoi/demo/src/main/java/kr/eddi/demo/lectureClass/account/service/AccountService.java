@@ -1,7 +1,7 @@
 package kr.eddi.demo.lectureClass.account.service;
 
-import kr.eddi.demo.lectureClass.account.controller.form.AccountResponseForm;
 import kr.eddi.demo.lectureClass.account.service.request.AccountRegisterRequest;
+import kr.eddi.demo.lectureClass.account.controller.form.AccountResponseForm;
 
 public interface AccountService {
     Boolean checkEmailDuplication(String email);

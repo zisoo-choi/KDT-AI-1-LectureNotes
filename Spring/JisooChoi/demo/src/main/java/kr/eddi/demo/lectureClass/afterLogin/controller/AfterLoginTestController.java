@@ -1,8 +1,7 @@
 package kr.eddi.demo.lectureClass.afterLogin.controller;
 
-import kr.eddi.demo.lectureClass.account.controller.form.AccountResponseForm;
-import kr.eddi.demo.lectureClass.account.entity.MemberAccount;
 import kr.eddi.demo.lectureClass.account.service.AccountService;
+import kr.eddi.demo.lectureClass.account.controller.form.AccountResponseForm;
 import kr.eddi.demo.lectureClass.afterLogin.controller.form.AfterLoginRequestForm;
 import kr.eddi.demo.lectureClass.authentication.redis.RedisService;
 import lombok.RequiredArgsConstructor;

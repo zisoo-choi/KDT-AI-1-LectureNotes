@@ -2,12 +2,12 @@ package kr.eddi.demo.lectureClass.testCode.account.service;
 
 import kr.eddi.demo.lectureClass.testCode.account.controller.form.TestAccountLoginResponseForm;
 import kr.eddi.demo.lectureClass.testCode.account.controller.form.TestAccountRequestForm;
+import kr.eddi.demo.lectureClass.testCode.account.controller.form.TestAccountResponseForm;
 import kr.eddi.demo.lectureClass.testCode.account.controller.form.TestAccountWithRoleRequestForm;
 import kr.eddi.demo.lectureClass.testCode.account.entity.AccountRole;
 import kr.eddi.demo.lectureClass.testCode.account.entity.TestAccount;
 import kr.eddi.demo.lectureClass.testCode.account.repository.TestAccountRepository;
 import kr.eddi.demo.lectureClass.testCode.account.repository.TestAccountRoleRepository;
-import kr.eddi.demo.lectureClass.testCode.order.controller.form.TestAccountResponseForm;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -21,7 +21,6 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 public class TestAccountServiceImpl implements TestAccountService {
-
     final private TestAccountRepository testAccountRepository;
     final private TestAccountRoleRepository testAccountRoleRepository;
 
@@ -55,6 +54,7 @@ public class TestAccountServiceImpl implements TestAccountService {
             return new TestAccountLoginResponseForm(UUID.randomUUID());
         }
 
+        log.debug("로그인 실패!");
         return new TestAccountLoginResponseForm(null);
     }
 

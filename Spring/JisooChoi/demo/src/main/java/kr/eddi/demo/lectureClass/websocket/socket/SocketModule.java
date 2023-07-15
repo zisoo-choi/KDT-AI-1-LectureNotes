@@ -1,5 +1,6 @@
 package kr.eddi.demo.lectureClass.websocket.socket;
 
+import com.corundumstudio.socketio.Disconnectable;
 import com.corundumstudio.socketio.SocketIOServer;
 import com.corundumstudio.socketio.listener.ConnectListener;
 import com.corundumstudio.socketio.listener.DataListener;
@@ -7,6 +8,7 @@ import com.corundumstudio.socketio.listener.DisconnectListener;
 import kr.eddi.demo.lectureClass.websocket.constants.Constants;
 import kr.eddi.demo.lectureClass.websocket.entity.Message;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ContentDisposition;
 import org.springframework.stereotype.Component;
 
 import java.util.stream.Collectors;

@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 public class TestOrder {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

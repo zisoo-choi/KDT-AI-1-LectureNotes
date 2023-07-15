@@ -13,7 +13,7 @@ public class DiceGameManager {
 
     private List<Player> playerList;
 
-    /* 싱글 플레이 */
+//    싱글 플레이
     public DiceGameManager(int diceMaxNumber) {
         playerList = new ArrayList<>();
 
@@ -39,7 +39,6 @@ public class DiceGameManager {
         if (playerDiceSumResult % DECISION_WIN == EVEN) {
             return "Win!";
         }
-
         return "Lose!";
     }
 
@@ -67,7 +66,6 @@ public class DiceGameManager {
         for (int i = 0; i < currentPlayerDiceList.size(); i++) {
             tmpSum += currentPlayerDiceList.get(i).getDiceNumber();
         }
-
         return tmpSum;
     }
 

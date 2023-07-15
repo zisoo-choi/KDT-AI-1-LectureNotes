@@ -11,7 +11,7 @@ import lombok.*;
 @Data
 @Builder
 @EqualsAndHashCode(callSuper = false)
-public class Message extends BaseModel {
+public class Message extends BaseModel{
 
     @Enumerated(EnumType.STRING)
     private MessageType messageType;

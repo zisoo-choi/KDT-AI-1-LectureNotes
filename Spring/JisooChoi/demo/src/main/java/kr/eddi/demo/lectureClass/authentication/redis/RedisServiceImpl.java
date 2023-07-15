@@ -11,7 +11,7 @@ import java.time.Duration;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class RedisServiceImpl implements RedisService {
+public class RedisServiceImpl implements RedisService{
 
     final private StringRedisTemplate redisTemplate;
 
@@ -19,6 +19,12 @@ public class RedisServiceImpl implements RedisService {
     public void setKeyAndValue(String token, Long accountId) {
         String accountIdToString = String.valueOf(accountId);
         ValueOperations<String, String> value = redisTemplate.opsForValue();
+
+        /*
+            유지 시간을 늘리고 싶다면
+            Duration.ofMinutes() 인 부분을 바꾸어주면 된다.
+            -> 우리는 현재는 3분으로 되어있다.
+        */
         value.set(token, accountIdToString, Duration.ofMinutes(3));
     }
 
@@ -28,9 +34,9 @@ public class RedisServiceImpl implements RedisService {
         String tmpAccountId = value.get(token);
         Long accountId;
 
-        if (tmpAccountId == null) {
+        if(tmpAccountId == null) {
             accountId = null;
-        } else {
+        }else {
             accountId = Long.parseLong(tmpAccountId);
         }
 

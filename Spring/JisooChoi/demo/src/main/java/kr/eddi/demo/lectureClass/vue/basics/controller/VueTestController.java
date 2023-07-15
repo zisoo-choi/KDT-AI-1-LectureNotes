@@ -5,12 +5,10 @@ import kr.eddi.demo.lectureClass.vue.basics.controller.form.VueRequestRequestOne
 import kr.eddi.demo.lectureClass.vue.basics.controller.form.VueRequestTestDataForm;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
-
 @Slf4j
 @RestController
 @RequestMapping("/vue-test")
 public class VueTestController {
-
     /*
     실제 @RequestMapping("/vue-test")와 @PostMapping("/receive-test")로 URL 경로가 만들어짐
     아래쪽에 있는 @RequestBody를 살펴봐야 합니다.
@@ -32,9 +30,7 @@ public class VueTestController {
     public Integer getRandomDice () {
         final int MIN = 1;
         final int MAX = 6;
-
         log.info("getRandomDice() 요청!");
-
         return CustomRandom.generateNumber(MIN, MAX);
     }
 }

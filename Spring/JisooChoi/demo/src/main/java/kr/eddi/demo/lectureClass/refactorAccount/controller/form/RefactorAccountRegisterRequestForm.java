@@ -5,8 +5,6 @@ import kr.eddi.demo.lectureClass.refactorAccount.service.request.RefactorAccount
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
-import java.util.UUID;
-
 @Getter
 @RequiredArgsConstructor
 public class RefactorAccountRegisterRequestForm {

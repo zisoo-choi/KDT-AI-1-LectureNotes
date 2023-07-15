@@ -20,7 +20,7 @@ public class FoodAmount {
     private Integer min;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "food_id")
+    @JoinColumn(name="food_id")
     private Food food;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

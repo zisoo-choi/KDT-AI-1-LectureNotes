@@ -10,11 +10,11 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 public class FileTest {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    
     private Integer price;
     private String productName;
 
